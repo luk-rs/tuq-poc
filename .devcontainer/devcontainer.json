@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "2.0.0",
+  "name": "Cardano dApp Dev",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "runArgs": [
+    "--name", "tuq-poc",
+    "--publish", "4500:4500"
+  ],
+  "workspaceFolder": "/usr/src/app",
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens"
+  ],
+  "postCreateCommand": "npm install",
+  "forwardPorts": [4500],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "remoteUser": "root"
+}
