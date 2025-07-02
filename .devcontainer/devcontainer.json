@@ -1,7 +1,9 @@
 {
   "schemaVersion": "2.0.0",
   "name": "Cardano dApp Dev",
-  "overrideCommand": false,
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
   "build": {
     "dockerfile": "../Dockerfile",
     "context": ".."
@@ -22,5 +24,6 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-  "remoteUser": "root"
+  "remoteUser": "root",
+  "overrideCommand": false
 }
