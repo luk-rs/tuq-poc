@@ -1,6 +1,7 @@
 {
   "schemaVersion": "2.0.0",
   "name": "Cardano dApp Dev",
+  "overrideCommand": false,
   "build": {
     "dockerfile": "../Dockerfile",
     "context": ".."
