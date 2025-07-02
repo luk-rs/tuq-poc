@@ -1,0 +1,51 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./offchain
+        run: npm ci
+
+      - name: Lint front-end
+        working-directory: ./offchain
+        run: npm run lint
+
+      - name: Test front-end
+        working-directory: ./offchain
+        run: npm run test
+
+      - name: Build front-end
+        working-directory: ./offchain
+        run: npm run build
+
+      - name: Install Aiken CLI
+        run: |
+          curl -sSL https://install.aiken-lang.org | sh
+          echo "export PATH=\"$HOME/.aiken/bin:$PATH\"" >> $GITHUB_ENV
+
+      - name: Build Aiken contracts
+        working-directory: ./contracts
+        run: aiken build
+
+      - name: Test Aiken contracts
+        working-directory: ./contracts
+        run: aiken test
