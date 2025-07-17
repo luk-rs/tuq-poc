@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite offchain --host --config offchain/vite.config.ts",
-    "build": "vite build",
-    "preview": "vite preview",
+    "build": "vite build offchain",
+    "preview": "vite preview offchain",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest"
   },
