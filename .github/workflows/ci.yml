@@ -37,15 +37,20 @@ jobs:
         working-directory: ./offchain
         run: npm run build
 
-      - name: Install Aiken CLI
-        run: |
-          curl -sSL https://install.aiken-lang.org | sh
-          echo "export PATH=\"$HOME/.aiken/bin:$PATH\"" >> $GITHUB_ENV
+      # Updated Aiken steps replacing the previous Aiken CLI installation and build steps
+      - name: Set up Aiken
+        uses: aiken-lang/setup-aiken@v1
+        with:
+          version: v1.1.9
+
+      - name: Check Aiken formatting
+        working-directory: ./contracts
+        run: aiken fmt --check
+
+      - name: Check Aiken contracts
+        working-directory: ./contracts
+        run: aiken check -D
 
       - name: Build Aiken contracts
         working-directory: ./contracts
         run: aiken build
-
-      - name: Test Aiken contracts
-        working-directory: ./contracts
-        run: aiken test
