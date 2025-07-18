@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  build_and_test:
-    name: Build and Test
+  offchain:
+    name: Offchain CI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -37,7 +37,13 @@ jobs:
         working-directory: ./offchain
         run: npm run build
 
-      # Updated Aiken steps replacing the previous Aiken CLI installation and build steps
+  contracts:
+    name: Contracts CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Set up Aiken
         uses: aiken-lang/setup-aiken@v1
         with:
