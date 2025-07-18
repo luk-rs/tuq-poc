@@ -1,3 +1,18 @@
-[project]
-name = "MyCardanoContract"
-version = "0.1.0"
+name = "tuq/poc"
+version = "0.0.0"
+compiler = "v1.1.9"
+plutus = "v3"
+license = "Apache-2.0"
+description = "Aiken contracts for project 'tuq/poc'"
+
+[repository]
+user = "tuq"
+project = "poc"
+platform = "github"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "v2.2.0"
+source = "github"
+
+[config]
