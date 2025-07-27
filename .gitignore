@@ -1,8 +1,11 @@
 node_modules/
 dist/
 .env
-.vscode/
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
 npm-debug.log*
 yarn-error.log*
 .vercel
 .env*.local
+.DS_Store
